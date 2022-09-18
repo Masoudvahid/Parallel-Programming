@@ -1,6 +1,2 @@
-﻿  Source.cpp
-C:\Users\Masoud\Documents\Parallel Programming\HW1_CalculateIntegral\Source.cpp(52,51): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\Masoud\Documents\Parallel Programming\HW1_CalculateIntegral\Source.cpp(53,51): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\Masoud\Documents\Parallel Programming\HW1_CalculateIntegral\Source.cpp(54,56): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\Masoud\Documents\Parallel Programming\HW1_CalculateIntegral\Source.cpp(66,100): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-  HW1_CalculateIntegral.vcxproj -> C:\Users\Masoud\Documents\Parallel Programming\HW1_CalculateIntegral\Debug\HW1_CalculateIntegral.exe
+﻿  main.cpp
+  HW1_CalculateIntegral.vcxproj -> C:\Users\Masoud\Documents\Parallel-Programming\HW1_CalculateIntegral\Debug\HW1_CalculateIntegral.exe

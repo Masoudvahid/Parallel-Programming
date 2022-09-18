@@ -1,1 +1,2 @@
 C:\Users\Masoud\Documents\Parallel Programming\HW1_CalculateIntegral\Debug\HW1_CalculateIntegral.exe
+C:\Users\Masoud\Documents\Parallel-Programming\HW1_CalculateIntegral\Debug\HW1_CalculateIntegral.exe
