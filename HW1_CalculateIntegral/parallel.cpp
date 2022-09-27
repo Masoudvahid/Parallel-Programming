@@ -6,6 +6,7 @@ void ParallelProgram(double(*function)(double x), integral_params integ_params) 
 	double integral_result = 0;
 	double final_answer = 0;
 
+	MPI_Barrier(MPI_COMM_WORLD);
 	double begin_time = MPI_Wtime();
 	double total_elapsed = 0;
 
@@ -29,7 +30,6 @@ void ParallelProgram(double(*function)(double x), integral_params integ_params) 
 			MPI_Send(&splitted_params.steps_num, 1, MPI_DOUBLE, i, 3, MPI_COMM_WORLD);
 		}
 	}
-	MPI_Barrier(MPI_COMM_WORLD); // TODO: Why this line is not imortant?
 
 	if (my_rank != 0) {
 		std::cout << "Rank " << my_rank << " -> ";
@@ -46,7 +46,6 @@ void ParallelProgram(double(*function)(double x), integral_params integ_params) 
 		double end_time = MPI_Wtime() - begin_time;
 		MPI_Send(&end_time, 1, MPI_DOUBLE, 0, my_rank, MPI_COMM_WORLD);
 	}
-	MPI_Barrier(MPI_COMM_WORLD); // TODO: Why this line is not imortant?
 
 	if (my_rank == 0) {
 		for (size_t i = 1; i < world_size; i++)
@@ -58,10 +57,14 @@ void ParallelProgram(double(*function)(double x), integral_params integ_params) 
 			MPI_Recv(&elapsed, 1, MPI_DOUBLE, i, i, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
 			total_elapsed += elapsed;
 		}
+		
+	}
+	MPI_Barrier(MPI_COMM_WORLD);
+	if (my_rank == 0) {
 		std::cout << "Integral answer = " << final_answer << std::endl;
+		total_elapsed += MPI_Wtime() - begin_time; /////////// inserted without debug !!!!
 		std::cout << "Total elapsed time = " << total_elapsed << std::endl;
 	}
-
 
 	MPI_Finalize();
 	// QUESTIONS: why MPI_Barrier doesn  not work -> i want to print start and end of the program?

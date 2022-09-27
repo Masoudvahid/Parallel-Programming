@@ -14,11 +14,12 @@ int main(int argc, char** argv) {
 	integral_params integ_params;
 	integ_params.a = 0;
 	integ_params.b = 1;
-	integ_params.steps_num = 1000000;
+	integ_params.steps_num = 1;
 
 #ifdef run_linear
 	LinearProgram(MyFunction, integ_params);
 #else // run_linear
+	ParallelProgram(MyFunction, integ_params);
 	ParallelProgram(MyFunction, integ_params);
 #endif
 

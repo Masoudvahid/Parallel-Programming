@@ -7,7 +7,7 @@ struct integral_params {
 	double steps_num;
 };
 
-double CalcIntegral(double(*function)(double x), double a, double b, int steps_num);
+double CalcIntegral(double(*function)(double x), double a, double b, double steps_num);
 
 
 #endif /* INTEGRAL_H */
