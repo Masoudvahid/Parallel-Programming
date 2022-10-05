@@ -1,2 +1,9 @@
-﻿  Source.cpp
-C:\Users\Masoud\Documents\Parallel Programming\HW1_CalculateIntegral\Source.cpp(1,10): fatal error C1083: Cannot open include file: 'mpi.h': No such file or directory
+﻿parallel.obj : error LNK2019: unresolved external symbol MPI_Send referenced in function "void __cdecl ParallelProgram(double (__cdecl*)(double),struct integral_params)" (?ParallelProgram@@YAXP6ANN@ZUintegral_params@@@Z)
+parallel.obj : error LNK2019: unresolved external symbol MPI_Recv referenced in function "void __cdecl ParallelProgram(double (__cdecl*)(double),struct integral_params)" (?ParallelProgram@@YAXP6ANN@ZUintegral_params@@@Z)
+parallel.obj : error LNK2019: unresolved external symbol MPI_Barrier referenced in function "void __cdecl ParallelProgram(double (__cdecl*)(double),struct integral_params)" (?ParallelProgram@@YAXP6ANN@ZUintegral_params@@@Z)
+parallel.obj : error LNK2019: unresolved external symbol MPI_Comm_size referenced in function "void __cdecl ParallelProgram(double (__cdecl*)(double),struct integral_params)" (?ParallelProgram@@YAXP6ANN@ZUintegral_params@@@Z)
+parallel.obj : error LNK2019: unresolved external symbol MPI_Comm_rank referenced in function "void __cdecl ParallelProgram(double (__cdecl*)(double),struct integral_params)" (?ParallelProgram@@YAXP6ANN@ZUintegral_params@@@Z)
+parallel.obj : error LNK2019: unresolved external symbol MPI_Wtime referenced in function "void __cdecl ParallelProgram(double (__cdecl*)(double),struct integral_params)" (?ParallelProgram@@YAXP6ANN@ZUintegral_params@@@Z)
+parallel.obj : error LNK2019: unresolved external symbol MPI_Init referenced in function "void __cdecl ParallelProgram(double (__cdecl*)(double),struct integral_params)" (?ParallelProgram@@YAXP6ANN@ZUintegral_params@@@Z)
+parallel.obj : error LNK2019: unresolved external symbol MPI_Finalize referenced in function "void __cdecl ParallelProgram(double (__cdecl*)(double),struct integral_params)" (?ParallelProgram@@YAXP6ANN@ZUintegral_params@@@Z)
+C:\Users\Masoud\Documents\Parallel-Programming\HW1_CalculateIntegral\x64\Debug\HW1_CalculateIntegral.exe : fatal error LNK1120: 8 unresolved externals

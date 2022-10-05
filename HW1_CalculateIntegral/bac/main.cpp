@@ -14,7 +14,7 @@ int main(int argc, char** argv) {
 	integral_params integ_params;
 	integ_params.a = 0;
 	integ_params.b = 1;
-	integ_params.steps_num = 10000000;
+	integ_params.steps_num = 10;
 
 #ifdef run_linear
 	LinearProgram(MyFunction, integ_params);

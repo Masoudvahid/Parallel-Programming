@@ -1,1 +1,3 @@
-﻿LINK : fatal error LNK1168: cannot open C:\Users\Masoud\Documents\Parallel-Programming\HW1_CalculateIntegral\Debug\HW1_CalculateIntegral.exe for writing
+﻿  main.cpp
+C:\Users\Masoud\Documents\Parallel-Programming\HW1_CalculateIntegral\main.cpp(113,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Masoud\Documents\Parallel-Programming\HW1_CalculateIntegral\main.cpp(105): error C4700: uninitialized local variable 'splitted_params' used

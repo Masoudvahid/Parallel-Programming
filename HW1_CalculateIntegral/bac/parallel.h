@@ -1,7 +1,7 @@
 #ifndef PARALLEL_H 
 #define PARALLEL_H
 
-#include <mpi.h>
+#include "mpi.h"
 #include <iostream>
 #include "integral.h"
 
