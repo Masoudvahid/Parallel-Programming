@@ -1,5 +1,5 @@
 ## Calculate integral using parallel programming
-This program calculates the integral of `$$ \(\int_{0}^{1} \dfrac{4}{1+x^2} \,dx\) $$`
+This program calculates the integral of $$ \(\int_{0}^{1} \dfrac{4}{1+x^2} \,dx\) $$
 with as the amount of processors provided.
 ### Compile and run
 * Linux:  
