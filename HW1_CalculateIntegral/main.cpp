@@ -9,31 +9,19 @@ double MyFunction(double x) {
 	return 4 / (1 + (x * x));
 }
 
-struct integral_params {
-	double low_lim;
-	double step_size;
-	double steps_num;
-};
-
-struct integral_info {
-	double low_lim;
-	double up_lim;
-	double sub_intervals;
-};
-
-double CalcIntegral(integral_params integ_params) {
+double CalcIntegral(double low_lim, double step_size, int steps_num) {
 	double area = 0.;
-	for (int step_i = 0; step_i < integ_params.steps_num; step_i++) {
-		area += 2 * MyFunction(integ_params.low_lim + step_i * integ_params.step_size);
+	for (int step_i = 0; step_i < steps_num; step_i++) {
+		area += 2 * MyFunction(low_lim + step_i * step_size);
 	}
-	return (area * integ_params.step_size) / 2;
+	return (area * step_size) / 2;
 }
 
-void PrintOutput(int my_rank, integral_params integ_params) {
+void PrintOutput(int my_rank, double low_lim, double step_size, int steps_num) {
 	std::cout << "Rank " << my_rank << " -> ";
-	std::cout << "<low_lim = " << integ_params.low_lim << "> --- ";
-	std::cout << "<step_size = " << integ_params.step_size << "> --- ";
-	std::cout << "<steps_num = " << integ_params.steps_num << ">" << std::endl;
+	std::cout << "<low_lim = " << low_lim << "> --- ";
+	std::cout << "<step_size = " << step_size << "> --- ";
+	std::cout << "<steps_num = " << steps_num << ">" << std::endl;
 }
 
 void SaveResults(int world_size, double sub_intervals, double total_elapsed) {
@@ -44,12 +32,10 @@ void SaveResults(int world_size, double sub_intervals, double total_elapsed) {
 }
 
 int main() {
-	integral_info integ_info;
-	integ_info.low_lim = 0;
-	integ_info.up_lim = 1;
-	integ_info.sub_intervals = 100000000;
+	double low_lim = 0;
+	double up_lim = 1;
+	double sub_intervals = 10;
 
-	integral_params integ_params{};
 
 	MPI_Init(NULL, NULL);
 
@@ -65,77 +51,57 @@ int main() {
 	int my_rank;
 	MPI_Comm_rank(MPI_COMM_WORLD, &my_rank);
 
-	double jump = (int)integ_info.sub_intervals / world_size;
-	int jump_residue = (int)integ_info.sub_intervals % world_size;
+	double step_size = (up_lim - low_lim) / sub_intervals;
+	int steps_residue = (int)sub_intervals % world_size;
 
-	double new_step_size = (integ_info.up_lim - integ_info.low_lim) / integ_info.sub_intervals;
 	if (my_rank == 0) {
 		begin_time = MPI_Wtime();
-		integ_params.steps_num = jump;
-		integ_params.step_size = new_step_size;
-		PrintOutput(my_rank, integ_params);
+		int steps_num = (int)sub_intervals / world_size;
+		PrintOutput(my_rank, low_lim, step_size, steps_num);
 
-		final_answer += CalcIntegral(integ_params);
-		integ_params.low_lim += jump * new_step_size;
-
+		final_answer += CalcIntegral(low_lim, step_size, steps_num);
 	}
 
 	if (my_rank != 0) {
-		integral_params splitted_params;
-		double new_lower_limit = 0;
-		if (my_rank < jump_residue) {
-			if (my_rank == 1) {
-				double new_lower_limit = integ_params.low_lim + (jump * new_step_size);
-			}
-			else
-			{
-				double new_lower_limit = integ_params.low_lim + (my_rank * new_step_size);
-			}
-			double new_step_size = (integ_info.up_lim - integ_info.low_lim) / integ_info.sub_intervals;
+		if (my_rank <= steps_residue) {
+			int steps_num = (int)sub_intervals / world_size + 1;
+			low_lim += ((up_lim - low_lim) / sub_intervals) * ((int)sub_intervals / world_size);
+			low_lim += (my_rank - 1) * step_size * steps_num;
+			PrintOutput(my_rank, low_lim, step_size, steps_num);
 
-			integ_params.steps_num = jump + 1;
-			integ_params.step_size = (jump + 1) * new_step_size;
+			integral_result = CalcIntegral(low_lim, step_size, steps_num);
 		}
-		else
-		{
+		else {
+			int steps_num = (int)sub_intervals / world_size;
+			low_lim += ((up_lim - low_lim) / sub_intervals) * ((int)sub_intervals / world_size);
 
+			low_lim += steps_residue != 0 ? (steps_residue)*step_size * (steps_num + 1) : (my_rank - 1) * step_size * (steps_num);
+			PrintOutput(my_rank, low_lim, step_size, steps_num);
+
+			integral_result = CalcIntegral(low_lim, step_size, steps_num);
 		}
 
-		
-		splitted_params.low_lim = new_lower_limit;
-
-
-
-		integral_result = CalcIntegral(splitted_params);
 		MPI_Send(&integral_result, 1, MPI_DOUBLE, 0, my_rank, MPI_COMM_WORLD);
-
-		//double end_time = MPI_Wtime() - begin_time;
-		//MPI_Send(&end_time, 1, MPI_DOUBLE, 0, my_rank, MPI_COMM_WORLD);
 	}
 
 	if (my_rank == 0) {
-		for (size_t i = 1; i < world_size; i++)
+		for (int i = 1; i < world_size; i++)
 		{
 			MPI_Recv(&integral_result, 1, MPI_DOUBLE, i, i, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
 			final_answer += integral_result;
-
-			double elapsed = 0;
-			MPI_Recv(&elapsed, 1, MPI_DOUBLE, i, i, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-			total_elapsed += elapsed;
 		}
-
 	}
+
 	MPI_Barrier(MPI_COMM_WORLD);
 	if (my_rank == 0) {
 		std::cout << "Integral answer = " << final_answer << std::endl;
+		fflush(stdout);
 		total_elapsed += (MPI_Wtime() - begin_time) / world_size;
 		std::cout << "Time elapsed for < " << world_size << " > nodes = " << total_elapsed << std::endl;
+		fflush(stdout);
 
-		SaveResults(world_size, integ_info.sub_intervals, total_elapsed);
+		SaveResults(world_size, sub_intervals, total_elapsed);
 	}
 
 	MPI_Finalize();
-
-
-
 }
