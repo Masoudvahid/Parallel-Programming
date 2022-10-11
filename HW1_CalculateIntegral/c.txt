@@ -1,14 +1,14 @@
- srun -N 1 a.out
- srun -N 2 a.out
- srun -N 3 a.out
- srun -N 4 a.out
- srun -N 5 a.out
- srun -N 6 a.out
- srun -N 7 a.out
- srun -N 8 a.out
- srun -N 9 a.out
- srun -N 10 a.out
- srun -N 11 a.out
- srun -N 12 a.out
- srun -N 13 a.out
- srun -N 14 a.out
+srun -n 1 a.out
+srun -n 2 a.out
+srun -n 3 a.out
+srun -n 4 a.out
+srun -n 5 a.out
+srun -n 6 a.out
+srun -n 7 a.out
+srun -n 8 a.out
+srun -n 9 a.out
+srun -n 10 a.out
+srun -n 11 a.out
+srun -n 12 a.out
+srun -n 13 a.out
+srun -n 14 a.out

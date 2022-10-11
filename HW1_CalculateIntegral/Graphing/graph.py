@@ -26,9 +26,8 @@ for i in linear:
     core.append(float(i[0]))
     for j in paralle:
         if i[1] == j[1]:
-            print(i, j, float(i[2]) / float(j[2]) / 10)
-            speedup.append((float(i[2]) / float(j[2])) / 10)
-            # speedup.append(float(j[2]) / float(i[2]))
+            print(i, j, float(i[2]) / float(j[2]))
+            speedup.append(float(i[2]) / float(j[2]))
             core.append(float(j[0]))
 
     # x axis values

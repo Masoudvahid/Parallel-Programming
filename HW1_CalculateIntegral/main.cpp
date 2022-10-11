@@ -96,7 +96,7 @@ int main() {
 	if (my_rank == 0) {
 		std::cout << "Integral answer = " << final_answer << std::endl;
 		fflush(stdout);
-		total_elapsed += (MPI_Wtime() - begin_time) / world_size;
+		total_elapsed += (MPI_Wtime() - begin_time);
 		std::cout << "Time elapsed for < " << world_size << " > nodes = " << total_elapsed << std::endl;
 		fflush(stdout);
 

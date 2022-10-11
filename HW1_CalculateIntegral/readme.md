@@ -1,5 +1,5 @@
 ## Calculate integral using parallel programming
-This program calculates the integral of ![img.png](img.png)
+This program calculates the integral of ![integral.png](integral.png)
 with as the amount of processors provided.
 ### Compile and run
 * Linux:  
