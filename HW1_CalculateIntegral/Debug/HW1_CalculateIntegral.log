@@ -1,0 +1,21 @@
+﻿  main.cpp
+C:\Users\Masoud\Documents\Parallel-Programming\HW1_CalculateIntegral\main.cpp(21,27): error C2131: expression did not evaluate to a constant
+C:\Users\Masoud\Documents\Parallel-Programming\HW1_CalculateIntegral\main.cpp(21,19): message : failure was caused by a read of a variable outside its lifetime
+C:\Users\Masoud\Documents\Parallel-Programming\HW1_CalculateIntegral\main.cpp(21,19): message : see usage of 'nPoints'
+C:\Users\Masoud\Documents\Parallel-Programming\HW1_CalculateIntegral\main.cpp(22,27): error C2131: expression did not evaluate to a constant
+C:\Users\Masoud\Documents\Parallel-Programming\HW1_CalculateIntegral\main.cpp(22,19): message : failure was caused by a read of a variable outside its lifetime
+C:\Users\Masoud\Documents\Parallel-Programming\HW1_CalculateIntegral\main.cpp(22,19): message : see usage of 'nPoints'
+C:\Users\Masoud\Documents\Parallel-Programming\HW1_CalculateIntegral\main.cpp(23,28): error C2131: expression did not evaluate to a constant
+C:\Users\Masoud\Documents\Parallel-Programming\HW1_CalculateIntegral\main.cpp(23,20): message : failure was caused by a read of a variable outside its lifetime
+C:\Users\Masoud\Documents\Parallel-Programming\HW1_CalculateIntegral\main.cpp(23,20): message : see usage of 'nPoints'
+C:\Users\Masoud\Documents\Parallel-Programming\HW1_CalculateIntegral\main.cpp(27,19): error C3863: array type 'double [nPoints+2]' is not assignable
+C:\Users\Masoud\Documents\Parallel-Programming\HW1_CalculateIntegral\main.cpp(28,19): error C3863: array type 'double [nPoints+2]' is not assignable
+C:\Users\Masoud\Documents\Parallel-Programming\HW1_CalculateIntegral\main.cpp(32,15): error C3863: array type 'double [nPoints+2]' is not assignable
+C:\Users\Masoud\Documents\Parallel-Programming\HW1_CalculateIntegral\main.cpp(33,25): error C3863: array type 'double [nPoints+2]' is not assignable
+C:\Users\Masoud\Documents\Parallel-Programming\HW1_CalculateIntegral\main.cpp(34,15): error C3863: array type 'double [nPoints+2]' is not assignable
+C:\Users\Masoud\Documents\Parallel-Programming\HW1_CalculateIntegral\main.cpp(35,25): error C3863: array type 'double [nPoints+2]' is not assignable
+C:\Users\Masoud\Documents\Parallel-Programming\HW1_CalculateIntegral\main.cpp(42,23): error C3863: array type 'double [nPoints+2]' is not assignable
+C:\Users\Masoud\Documents\Parallel-Programming\HW1_CalculateIntegral\main.cpp(45,23): error C3863: array type 'double [nPoints+2]' is not assignable
+C:\Users\Masoud\Documents\Parallel-Programming\HW1_CalculateIntegral\main.cpp(53,16): warning C4477: 'printf' : format string '%f' requires an argument of type 'double', but variadic argument 1 has type 'double [nPoints+2]'
+C:\Users\Masoud\Documents\Parallel-Programming\HW1_CalculateIntegral\main.cpp(67,20): error C3863: array type 'double [nPoints+2]' is not assignable
+C:\Users\Masoud\Documents\Parallel-Programming\HW1_CalculateIntegral\main.cpp(69,16): warning C4477: 'printf' : format string '%f' requires an argument of type 'double', but variadic argument 1 has type 'double [nPoints+2]'

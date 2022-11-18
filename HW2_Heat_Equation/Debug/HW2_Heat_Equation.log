@@ -1,0 +1,5 @@
+﻿  main.cpp
+C:\Users\Masoud\Documents\Parallel-Programming\HW2_Heat_Equation\main.cpp(33,24): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\Masoud\Documents\Parallel-Programming\HW2_Heat_Equation\main.cpp(31,21): warning C4101: 'endIterator': unreferenced local variable
+C:\Users\Masoud\Documents\Parallel-Programming\HW2_Heat_Equation\main.cpp(31,6): warning C4101: 'beginIterator': unreferenced local variable
+  HW2_Heat_Equation.vcxproj -> C:\Users\Masoud\Documents\Parallel-Programming\HW2_Heat_Equation\Debug\HW2_Heat_Equation.exe
