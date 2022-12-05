@@ -8,8 +8,8 @@ import os
 paralle = []
 linear = []
 
-for filename in os.listdir('Inputs/'):
-    with open(os.path.join('Inputs/', filename), 'r') as f:
+for filename in os.listdir(r'C:\\Users\\masoud-pc\Documents\\Parallel-Programming\\HW2_Heat_Equation\\Graphing\\Inputs\\'):
+    with open(os.path.join(r'C:\\Users\\masoud-pc\Documents\\Parallel-Programming\\HW2_Heat_Equation\\Graphing\\Inputs\\', filename), 'r') as f:
         res = f.read()
         if res.splitlines()[0] == "1":
             linear.append([res.splitlines()[0], res.splitlines()[1], res.splitlines()[2]])
