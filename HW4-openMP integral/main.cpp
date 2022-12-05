@@ -48,7 +48,7 @@ int main(int argc, char **argv)
     // intgral_result += Function(upper_limit) + Function(lower_limit); // Adding the first and last parts of the
 
     int myid, num_procs, num_threads;
-    num_procs = omp_get_num_procs(); //   getting the number of available computing cores
+    num_procs = omp_get_max_procs(); //   getting the number of available computing cores
     printf("Num of processors = %d \n", num_procs);
 
     omp_set_num_threads(THREADS_NUM); // explicit setting amount of threads
